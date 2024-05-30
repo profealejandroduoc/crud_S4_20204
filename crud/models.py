@@ -37,6 +37,7 @@ class Persona(models.Model):
     apellido=models.CharField(max_length=50, null=False)
     f_nacto=models.DateField()
     email=models.EmailField(max_length=100, null=False)
+    imagen=models.ImageField(upload_to='personas', null=True)
     
     def __str__(self):
         return f"{self.rut} - {self.nombre} {self.apellido}"
