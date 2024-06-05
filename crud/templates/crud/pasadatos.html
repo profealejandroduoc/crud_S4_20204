@@ -1,0 +1,22 @@
+{% extends "crud/base.html" %}
+
+{% block contenido %}
+<div class="container mx-2 mt-3">
+    <div>
+        <h3>Registro de Personas</h3>
+        <p>{{fecha}} - {{msg}}</p>
+        <p>{{numero}}</p>
+    </div>
+    <h5>Lista de animales</h5>
+    <ul>
+
+    {% for animal in animales %}
+        <li>{{animal}}</li>
+    {% endfor %}
+
+    </ul>
+    <p>{{datos}}</p>
+</div>
+
+
+{% endblock contenido %}
