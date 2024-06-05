@@ -1,14 +1,21 @@
 {% extends "crud/base.html" %}
-
+{% load static %}
 
 
 {% block contenido %}
 
-
-    <div>
-        <h1 style=" text-align: center;">Este es el index</h1>
+<div class="container-fluid">
+    <div class=" p-5 mt-2 bg-info text-white ">
+        <h1>Crud con Django</h1>
+        <p>Es muy fácil...</p>
+    </div>
+    <div class="mt-4 bg-muted px-2">
+        <h3>Listar elementos desde la base de datos usando ORM</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque excepturi reiciendis neque ipsum minima
+            voluptate totam cum dolorum officia. Saepe minus quaerat delectus maxime aliquam sit necessitatibus debitis
+            vitae culpa.</p>
     </div>
 
-
+</div>
 
 {% endblock contenido %}
