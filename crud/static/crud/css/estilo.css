@@ -4,7 +4,7 @@
 
 
 .footer {
-  position: fixed;
+  position: relative;
   padding: 3%;
   left: 0;
   bottom: 0;
