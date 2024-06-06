@@ -2,6 +2,7 @@ from django.shortcuts import render
 from datetime import date, datetime
 from .models import Persona
 from django.shortcuts import get_object_or_404
+from .forms import PersonaForm
 
 # Create your views here.
 def index(request):
@@ -43,5 +44,13 @@ def detalles(request, id):
     }
     return render(request,'crud/detalles.html',datos)
 
+
 def crearpersona(request):
-    return render(request,'crud/crearpersona.html')
+
+    formulario=PersonaForm()
+
+    datos={
+        "formulario":formulario
+    }
+
+    return render(request,'crud/crearpersona.html', datos)
