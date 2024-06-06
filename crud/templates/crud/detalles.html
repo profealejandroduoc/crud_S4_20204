@@ -1,0 +1,41 @@
+{% extends "crud/base.html" %}
+{% load static %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <!--['rut','nombre','apellido','f_nacto','email','imagen']-->
+
+    <div class="row">
+        <div class="col-sm-4">
+            
+        </div>
+
+        <div class="col-sm-4">
+            <div>
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <h2 class="card-title text-center">{{persona.nombre}} {{persona.apellido}}</h2>
+                        <div class="p-2">
+                            <img class="card-img-top" src="{{persona.imagen.url}}" alt="Foto" />
+                        </div>
+                        
+                        <p class="card-text"><span style="font-weight:bold;">Rut: </span>{{persona.rut}}</p>
+                        <p class="card-text"><span style="font-weight:bold;">Fecha de Nacimiento: </span>{{persona.f_nacto}}</p>
+                        <p class="card-text"><span style="font-weight:bold;">Correo Electrónico: </span>{{persona.email}}</p>
+                    </div>
+                </div>
+                
+
+
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+
+
+{% endblock contenido %}

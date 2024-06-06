@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from datetime import date, datetime
 from .models import Persona
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def index(request):
@@ -31,3 +32,16 @@ def pasadatos(request):
     
     print(f"La fecha de hoy es {fecha}")
     return render(request,'crud/pasadatos.html', datos)
+
+def detalles(request, id):
+    
+    #persona=Persona.objects.get(rut=id)
+    persona=get_object_or_404(Persona,rut=id)
+    
+    datos={
+        "persona":persona
+    }
+    return render(request,'crud/detalles.html',datos)
+
+def crearpersona(request):
+    return render(request,'crud/crearpersona.html')
