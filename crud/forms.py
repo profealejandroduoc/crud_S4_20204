@@ -9,4 +9,13 @@ class PersonaForm(forms.ModelForm):
     class Meta:
         model = Persona
         fields = ['rut','nombre','apellido','f_nacto','email','imagen']
+        
+
+class UpdPersonaForm(forms.ModelForm):
+    
+    f_nacto=forms.DateField(widget=forms.DateInput(attrs={"type":"date"}))
+    
+    class Meta:
+        model = Persona
+        fields = ['nombre','apellido','f_nacto','email','imagen']
 
