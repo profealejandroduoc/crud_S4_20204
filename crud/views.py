@@ -3,6 +3,7 @@ from datetime import date, datetime
 from .models import Persona
 from django.shortcuts import get_object_or_404, redirect
 from .forms import PersonaForm, UpdPersonaForm
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -53,6 +54,9 @@ def crearpersona(request):
         formulario=PersonaForm(request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            #from django.contrib import messages
+            messages.set_level(request,messages.SUCCESS)
+            messages.success(request, "Persona creada con exito!!!")
             return redirect(to="personas")
         
     datos={
@@ -70,6 +74,8 @@ def modificarpersona(request,id):
          form=UpdPersonaForm(request.POST, files=request.FILES, instance=persona)
          if form.is_valid():
              form.save()
+             messages.set_level(request,messages.WARNING)
+             messages.warning(request,"Persona modificada")
              return redirect(to="personas")
     
     datos={

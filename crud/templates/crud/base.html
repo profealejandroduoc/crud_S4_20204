@@ -13,10 +13,42 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <link rel="stylesheet" href="{% static "crud/css/estilo.css" %}">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm bg-light navbar-light border">
+  {% if messages %}
+
+    {% for message in messages %}
+
+    {% if message.level == 25 %}
+    <script>
+      //alerta de exito
+      Swal.fire({
+        title: 'Éxito!!!',
+        text: '{{ message }}',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
+    </script>
+    {% endif %}
+
+    {% if message.level == 30 %}
+    <script>
+      //alerta de advertencia
+      Swal.fire({
+        title: 'Éxito!!! ',
+        text: '{{ message }}',
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      })
+    </script>
+    {% endif %}
+    {% endfor %}
+
+{% endif %}
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light border">
     <div class="container-fluid">
       <ul class="navbar-nav">
         <li class="nav-item">
