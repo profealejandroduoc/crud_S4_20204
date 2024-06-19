@@ -10,6 +10,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 
+
+def crearcuenta(request):
+    return render(request, 'registration/crearcuenta.html')
+
 #Funcion de logout
 def salir(request):
     logout(request)

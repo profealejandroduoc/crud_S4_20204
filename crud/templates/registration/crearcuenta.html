@@ -10,19 +10,17 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <div class="p-5 border rounded shadow mt-4">
-                <h3>Inicio Sesión</h3>
+                <h3>Registro de Usuario</h3>
                 <form action="" method="post">
                     {% csrf_token %}
                     {{form | crispy}}
 
                     <div>
-                        <input type="submit" value="Login" class="btn btn-primary btn-lg">
+                        <input type="submit" value="Registrarse" class="btn btn-success btn-lg">
                     </div>
                 </form>
 
-                <div class="text-center mt-4">
-                    <a href="{% url 'crearcuenta' %}" class="nav-link text-primary">Crear cuenta</a>
-                </div>
+             
             </div>
            
         </div>
