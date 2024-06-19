@@ -17,34 +17,34 @@
 </head>
 
 <body>
-  {% if messages %}
+{% if messages %}
 
-    {% for message in messages %}
+  {% for message in messages %}
 
     {% if message.level == 25 %}
-    <script>
-      //alerta de exito
-      Swal.fire({
-        title: 'Éxito!!!',
-        text: '{{ message }}',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      })
-    </script>
+      <script>
+        //alerta de exito
+        Swal.fire({
+          title: 'Éxito!!!',
+          text: '{{ message }}',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+      </script>
     {% endif %}
 
-    {% if message.level == 30 %}
-    <script>
-      //alerta de advertencia
-      Swal.fire({
-        title: 'Éxito!!! ',
-        text: '{{ message }}',
-        icon: 'warning',
-        confirmButtonText: 'Ok'
-      })
-    </script>
-    {% endif %}
-    {% endfor %}
+        {% if message.level == 30 %}
+          <script>
+            //alerta de advertencia
+            Swal.fire({
+              title: 'Éxito!!! ',
+              text: '{{ message }}',
+              icon: 'warning',
+              confirmButtonText: 'Ok'
+            })
+          </script>
+        {% endif %}
+  {% endfor %}
 
 {% endif %}
 
@@ -63,6 +63,20 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
+    
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link text-bg-primary" href="">{{user.username}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-bg-primary" href="{% url 'salir' %}">Cerrar Sesión</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-bg-primary" href="{% url 'login' %}">Iniciar Sesión</a>
+          </li>
+        {% endif %}
+
       </ul>
     </div>
   </nav>

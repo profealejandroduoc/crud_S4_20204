@@ -52,6 +52,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'
+
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 ROOT_URLCONF = 'sitio.urls'
@@ -93,7 +97,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
+   {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {

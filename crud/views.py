@@ -4,6 +4,17 @@ from .models import Persona
 from django.shortcuts import get_object_or_404, redirect
 from .forms import PersonaForm, UpdPersonaForm
 from django.contrib import messages
+from os import remove, path
+from django.conf import settings
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
+
+
+#Funcion de logout
+def salir(request):
+    logout(request)
+    return redirect(to='index')
+    
 
 # Create your views here.
 def index(request):
@@ -92,6 +103,11 @@ def eliminarpersona(request,id):
     
     if request.method=="POST":
         persona.delete()
+        #from os import remove, path
+        remove(path.join(str(settings.MEDIA_ROOT).replace('/media','')+str(persona.imagen.url).replace('/','\\')))
+        
+        messages.set_level(request,messages.WARNING)
+        messages.warning(request,"Persona Eliminada")
         return redirect(to="personas")
       
 
