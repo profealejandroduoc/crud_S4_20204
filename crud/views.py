@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import date, datetime
 from .models import Persona
 from django.shortcuts import get_object_or_404, redirect
-from .forms import PersonaForm, UpdPersonaForm
+from .forms import PersonaForm, UpdPersonaForm, UserForm
 from django.contrib import messages
 from os import remove, path
 from django.conf import settings
@@ -12,7 +12,18 @@ from django.contrib.auth.models import User
 
 
 def crearcuenta(request):
-    return render(request, 'registration/crearcuenta.html')
+    form=UserForm()
+    
+    if request.method=="POST":
+        form=UserForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to="login")
+    
+    datos={
+        "form":form
+    }
+    return render(request, 'registration/crearcuenta.html',datos)
 
 #Funcion de logout
 def salir(request):
