@@ -57,9 +57,11 @@
        <li class="nav-item">
           <a class="nav-link" href="{% url "personas" %}">Personas</a>
         </li>
+        {% if perms.crud.add_permission %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="{% url "dashboard" %}">Administrar</a>
         </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>

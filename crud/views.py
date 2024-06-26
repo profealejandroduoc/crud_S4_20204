@@ -1,15 +1,25 @@
 from django.shortcuts import render
 from datetime import date, datetime
-from .models import Persona
+from .models import Persona, User
 from django.shortcuts import get_object_or_404, redirect
 from .forms import PersonaForm, UpdPersonaForm, UserForm
 from django.contrib import messages
 from os import remove, path
 from django.conf import settings
 from django.contrib.auth import logout
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required, permission_required
 
 
+@login_required
+@permission_required('crud.add_permission')
+def dashboard(requets):
+    usuarios=User.objects.all()
+    datos={
+        "usuarios":usuarios
+    }
+    
+    return render(requets, 'crud/dashboard.html', datos)
 
 def crearcuenta(request):
     form=UserForm()
@@ -35,7 +45,8 @@ def salir(request):
 def index(request):
     return render(request,'crud/index.html')
 
-
+@login_required
+@permission_required("crud.view_persona")
 def personas(request):
     personas=Persona.objects.all()
     
